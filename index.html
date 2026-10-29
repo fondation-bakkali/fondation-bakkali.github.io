@@ -9,8 +9,22 @@ function setLang(lang,el){
  document.getElementById('address').textContent=address[lang];document.getElementById('intro').textContent=intro[lang];document.getElementById('note').textContent=note[lang];
  document.querySelectorAll('[data-ar]').forEach(x=>x.textContent=x.dataset[lang]);
 }
-function downloadContact(){
-const v=['BEGIN:VCARD','VERSION:3.0','FN:Fondation Ahmed Abdessalam Bakkali','ORG:Fondation Ahmed Abdessalam Bakkali','TEL;TYPE=WORK:+13129720171','EMAIL:ahmedabdessalambakkali1932@gmail.com','URL:https://www.ahmedabdessalambakkali.com','ADR;TYPE=WORK:;;Rue Ben Ayad\\, ancienne médina;Asilah;;;Maroc','END:VCARD'].join('\\r\\n');
-const a=document.createElement('a');const url=URL.createObjectURL(new Blob([v],{type:'text/vcard;charset=utf-8'}));a.href=url;a.download='Fondation_Ahmed_Abdessalam_Bakkali.vcf';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
-}
+function downloadContact() {
+  const v = [
+    'BEGIN:VCARD',
+    'VERSION:3.0',
+    'FN:Fondation Ahmed Abdessalam Bakkali',
+    'ORG:Fondation Ahmed Abdessalam Bakkali',
+    'TEL;TYPE=WORK:+13129720171',
+    'EMAIL:ahmedabdessalambakkali1932@gmail.com',
+    'URL:https://www.ahmedabdessalambakkali.com',
+    'ADR;TYPE=WORK:;;Rue Ben Ayad\\, ancienne médina;Asilah;;;Maroc',
+    'END:VCARD'
+  ].join('\r\n');
+
+  const blob = new Blob([v], {
+    type: 'text/vcard;charset=utf-8'
+  });
+
+  const url = URL.createObjectURL(blob);
 </script></body></html>

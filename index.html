@@ -13,6 +13,7 @@ function downloadContact() {
   const v = [
     'BEGIN:VCARD',
     'VERSION:3.0',
+    'N:;Fondation Ahmed Abdessalam Bakkali;;;',
     'FN:Fondation Ahmed Abdessalam Bakkali',
     'ORG:Fondation Ahmed Abdessalam Bakkali',
     'TEL;TYPE=WORK:+13129720171',
@@ -20,11 +21,24 @@ function downloadContact() {
     'URL:https://www.ahmedabdessalambakkali.com',
     'ADR;TYPE=WORK:;;Rue Ben Ayad\\, ancienne médina;Asilah;;;Maroc',
     'END:VCARD'
-  ].join('\r\n');
+  ].join('\r\n') + '\r\n';
 
   const blob = new Blob([v], {
     type: 'text/vcard;charset=utf-8'
   });
 
   const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+
+  a.href = url;
+  a.download = 'Fondation_Ahmed_Abdessalam_Bakkali.vcf';
+
+  document.body.appendChild(a);
+  a.click();
+
+  setTimeout(() => {
+    a.remove();
+    URL.revokeObjectURL(url);
+  }, 10000);
+}
 </script></body></html>
